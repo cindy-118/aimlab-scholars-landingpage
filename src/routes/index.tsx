@@ -1003,7 +1003,7 @@ function AlumniTestimonials() {
           </div>
           <div>
             <h2 className="section-main-title testimonial-section-title">
-              Những chia sẻ từ người học về hành trình học thuật chuyên sâu.
+              Người học nói gì về hành trình học thuật chuyên sâu?
             </h2>
           </div>
         </div>
