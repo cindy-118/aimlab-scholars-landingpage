@@ -1242,5 +1242,6 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
+  );// deploy sync
+  
 }
