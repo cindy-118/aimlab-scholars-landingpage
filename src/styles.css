@@ -6300,3 +6300,131 @@
 .track-name-second-line {
   display: block;
 }
+
+/* Independent-only programme: retain the existing flat grid, square nodes and indigo/mint palette. */
+.track-solo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.36fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  align-items: stretch;
+}
+.track-solo-identity {
+  min-width: 0;
+  min-height: 28rem;
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+  border: 1px solid var(--brand-ink);
+  background: #f0f2ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.track-solo-heading {
+  display: grid;
+  grid-template-columns: 0.8rem minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0.85rem;
+}
+.track-solo-node {
+  display: block;
+  height: 0.7rem;
+  width: 0.7rem;
+  margin-top: 0.3rem;
+  background: #657dff;
+}
+.track-solo-heading small {
+  display: block;
+  color: #657dff;
+  font: 600 0.75rem/1.3 var(--font-mono);
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+.track-solo-heading h3 {
+  margin: 0.65rem 0 0;
+  font-size: clamp(1.75rem, 3vw, 2.65rem);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+.track-solo-heading h3 span { display: block; }
+.track-solo-heading h3 span:last-child { color: #657dff; }
+.track-solo-path {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.25rem;
+  height: 3rem;
+  padding-inline: 0.2rem;
+}
+.track-solo-path-line {
+  position: absolute;
+  top: 50%;
+  left: 0.45rem;
+  right: 0.45rem;
+  height: 1px;
+  background: #657dff;
+  transform: translateY(-50%);
+  opacity: 0.55;
+}
+.track-solo-path-point {
+  position: relative;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex: 0 0 auto;
+  background: #657dff;
+  border: 2px solid #f0f2ff;
+  box-shadow: 0 0 0 1px #657dff;
+  animation: trackSoloPulse 4.8s ease-in-out infinite;
+}
+.track-solo-path-point:nth-of-type(3) { animation-delay: 1.6s; background: #00a26b; box-shadow: 0 0 0 1px #00a26b; }
+.track-solo-path-point:nth-of-type(4) { animation-delay: 3.2s; }
+@keyframes trackSoloPulse {
+  0%, 100% { transform: scale(1); }
+  17% { transform: scale(1.65); }
+  33% { transform: scale(1); }
+}
+.track-solo-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--brand-ink);
+  color: #657dff;
+  font: 600 0.75rem/1 var(--font-mono);
+}
+.track-solo-foot svg { transition: transform 0.25s ease; }
+.track-solo-identity:hover .track-solo-foot svg { transform: translate(4px, -4px); }
+.track-solo-detail {
+  min-width: 0;
+  padding-top: 0 !important;
+}
+.track-solo-detail .track-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.track-solo-detail .track-list-items li {
+  transition: background-color 0.22s ease, transform 0.22s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .track-solo-detail .track-list-items li:hover {
+    background: #f0f2ff;
+    transform: translateX(3px);
+  }
+}
+@media (max-width: 899px) {
+  .track-solo-layout { grid-template-columns: 1fr; }
+  .track-solo-identity { min-height: 0; padding: 1.35rem; }
+  .track-solo-path { margin-top: 1.5rem; height: 1.5rem; }
+  .track-solo-foot { margin-top: 0.8rem; }
+  .track-solo-detail { padding-top: 0.25rem !important; }
+}
+@media (max-width: 640px) {
+  .track-solo-layout { margin-top: 2rem; gap: 1.8rem; }
+  .track-solo-heading h3 { font-size: clamp(1.75rem, 8vw, 2.45rem); }
+  .track-solo-detail .track-detail-grid { grid-template-columns: 1fr; }
+  .track-solo-detail .track-detail-heading h3 { font-size: clamp(1.95rem, 8vw, 2.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track-solo-path-point { animation: none; }
+  .track-solo-foot svg,
+  .track-solo-detail .track-list-items li { transition: none; }
+}

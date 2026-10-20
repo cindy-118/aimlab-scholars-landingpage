@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type TrackKey = "standard" | "independent";
+type TrackKey = "independent";
 
 type StorySignal = {
   title: string;
@@ -120,50 +120,27 @@ type TrackConfig = {
   accent: "mint" | "indigo";
 };
 
-const trainingTracks: TrackConfig[] = [
-  {
-    key: "standard",
-    label: "Standard Track",
-    vietnameseName: "Lộ trình tiêu chuẩn",
-    englishName: "Standard Track",
-    goal: "Mục tiêu hướng tới các kỳ thi học thuật",
-    description:
-      "Dành cho học sinh, sinh viên có nền tảng Toán phổ thông tốt và muốn hướng tới các sân chơi học thuật về Toán, Toán ứng dụng, AI và Khoa học dữ liệu.",
-    outcomes: [
-      "Nền tảng Toán thiết yếu cho AI",
-      "Xây dựng mô hình và triển khai dự án thực tiễn",
-      "Sẵn sàng cho các cuộc thi, nghiên cứu phù hợp",
-    ],
-    benefits: [
-      "Lộ trình thiết kế theo năng lực, mục tiêu của từng nhóm",
-      "Head Mentor giảng dạy chính",
-      "Mentor hướng dẫn, giải đáp và theo sát tiến độ",
-      "Theo dõi, báo cáo và đánh giá định kỳ",
-    ],
-    accent: "mint",
-  },
-  {
-    key: "independent",
-    label: "Independent Track",
-    vietnameseName: "Lộ trình chuyên biệt",
-    englishName: "Independent Track",
-    goal: "Mục tiêu chuyên biệt theo nhu cầu",
-    description:
-      "Dành cho học viên đã có mục tiêu cụ thể về nghiên cứu, cuộc thi và muốn phát triển chuyên sâu, tối ưu hoá nhất theo nhịp độ cá nhân hoặc nhóm nhỏ.",
-    outcomes: [
-      "Dự án hoặc sản phẩm học thuật cụ thể",
-      "Hồ sơ thể hiện rõ năng lực học thuật cá nhân",
-      "Chiến lược phát triển theo từng giai đoạn và dài hạn",
-    ],
-    benefits: [
-      "Lộ trình thiết kế theo năng lực và mục tiêu của học viên",
-      "Head Mentor hướng dẫn và giải đáp trực tiếp",
-      "Theo dõi, báo cáo và đánh giá định kỳ",
-      "Tham dự buổi định hướng cá nhân hằng tháng",
-    ],
-    accent: "indigo",
-  },
-];
+const independentTrack: TrackConfig = {
+  key: "independent",
+  label: "Independent Track",
+  vietnameseName: "Lộ trình chuyên biệt",
+  englishName: "Independent Track",
+  goal: "Mục tiêu chuyên biệt theo nhu cầu",
+  description:
+    "Dành cho học viên đã có mục tiêu cụ thể về nghiên cứu, cuộc thi và muốn phát triển chuyên sâu, tối ưu hoá nhất theo nhịp độ cá nhân hoặc nhóm nhỏ.",
+  outcomes: [
+    "Dự án hoặc sản phẩm học thuật cụ thể",
+    "Hồ sơ thể hiện rõ năng lực học thuật cá nhân",
+    "Chiến lược phát triển theo từng giai đoạn và dài hạn",
+  ],
+  benefits: [
+    "Lộ trình thiết kế theo năng lực và mục tiêu của học viên",
+    "Head Mentor hướng dẫn và giải đáp trực tiếp",
+    "Theo dõi, báo cáo và đánh giá định kỳ",
+    "Tham dự buổi định hướng cá nhân hằng tháng",
+  ],
+  accent: "indigo",
+};
 
 type JourneyStep = {
   number: string;
@@ -325,7 +302,6 @@ const scrollToForm = (track?: TrackKey | "undecided") => {
 };
 
 function Index() {
-  const [activeTrack, setActiveTrack] = useState<TrackKey>("standard");
   const [activePillarIndex, setActivePillarIndex] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -347,7 +323,8 @@ function Index() {
         ".about-aimlab-list > *",
         ".about-aimlab-visual",
         ".program-intro",
-        ".track-card",
+        ".track-solo-identity",
+        ".track-solo-detail",
         ".journey-steps .journey-step",
         ".opportunity-options .opportunity-option",
         ".logo-wall .institution-logo",
@@ -509,7 +486,7 @@ function Index() {
           </div>
           <div className="hero-highlights relative z-10 border-t border-border pt-5">
             <div>
-              <strong className="block text-2xl text-foreground">02</strong>
+              <strong className="block text-2xl text-foreground">01</strong>
               <span className="text-xs text-muted-foreground">Hướng đào tạo</span>
             </div>
             <div>
@@ -673,84 +650,74 @@ function Index() {
           <div className="program-intro">
             <span className="section-label">02 // HƯỚNG ĐÀO TẠO</span>
             <h2 className="program-title section-main-title">
-              02 hướng đào tạo theo mục tiêu người học.
+              Một lộ trình chuyên biệt theo mục tiêu người học.
             </h2>
           </div>
 
-          <div className="track-layout-v2 mt-14 grid md:grid-cols-[.34fr_1.66fr]">
-            <div className="track-tabs-v2" role="tablist" aria-label="Hướng đào tạo">
-              {trainingTracks.map((track) => (
-                <button
-                  key={track.key}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeTrack === track.key}
-                  className={`track-tab-v2 track-tab-v2-${track.accent} ${activeTrack === track.key ? "is-active" : ""}`}
-                  onClick={() => setActiveTrack(track.key)}
-                >
-                  <span
-                    className={`track-tab-node track-tab-node-${track.accent}`}
-                    aria-hidden="true"
-                  />
-                  <span>
-                    <small>{track.englishName}</small>
-
-<strong>
-  <span>Lộ trình</span>
-  <span className="track-name-second-line">
-    {track.vietnameseName.replace("Lộ trình ", "")}
-  </span>
-</strong>
-                  </span>
-                  <ArrowRight size={18} />
-                </button>
-              ))}
+          <div className="track-solo-layout mt-14">
+            <div
+              className="track-solo-identity"
+              aria-label="Independent Track — Lộ trình chuyên biệt"
+            >
+              <div className="track-solo-heading">
+                <span className="track-solo-node" aria-hidden="true" />
+                <div>
+                  <small>{independentTrack.englishName}</small>
+                  <h3>
+                    <span>Lộ trình</span>
+                    <span>chuyên biệt</span>
+                  </h3>
+                </div>
+              </div>
+              <div className="track-solo-path" aria-hidden="true">
+                <span className="track-solo-path-line" />
+                <span className="track-solo-path-point" />
+                <span className="track-solo-path-point" />
+                <span className="track-solo-path-point" />
+              </div>
+              <div className="track-solo-foot" aria-hidden="true">
+                <span>01 / 01</span>
+                <ArrowUpRight size={20} strokeWidth={1.7} />
+              </div>
             </div>
 
-            {trainingTracks.map((track) => (
-              <article
-                key={track.key}
-                role="tabpanel"
-                hidden={activeTrack !== track.key}
-                className={`track-detail-v2 track-detail-v2-${track.accent}`}
+            <article className="track-detail-v2 track-detail-v2-indigo track-solo-detail">
+              <div className="track-detail-heading">
+                <span className="track-chip track-chip-indigo">{independentTrack.englishName}</span>
+                <h3>{independentTrack.goal}</h3>
+                {independentTrack.format ? (
+                  <p className="track-meta">{independentTrack.format}</p>
+                ) : null}
+                <p className="track-description">{independentTrack.description}</p>
+              </div>
+
+              <div className="track-detail-grid">
+                <TrackList
+                  title="Kết quả hướng tới"
+                  items={independentTrack.outcomes}
+                  accent={independentTrack.accent}
+                />
+                <TrackList
+                  title="Quyền lợi đồng hành"
+                  items={independentTrack.benefits}
+                  accent={independentTrack.accent}
+                />
+              </div>
+
+              <Button
+                variant="hero"
+                size="lg"
+                className="track-cta"
+                onClick={() => scrollToForm(independentTrack.key)}
               >
-                <div className="track-detail-heading">
-                  <span className={`track-chip track-chip-${track.accent}`}>
-                    {track.englishName}
-                  </span>
-                  <h3>{track.goal}</h3>
-                  {track.format ? <p className="track-meta">{track.format}</p> : null}
-                  <p className="track-description">{track.description}</p>
-                </div>
-
-                <div className="track-detail-grid">
-                  <TrackList
-                    title="Kết quả hướng tới"
-                    items={track.outcomes}
-                    accent={track.accent}
-                  />
-                  <TrackList
-                    title="Quyền lợi đồng hành"
-                    items={track.benefits}
-                    accent={track.accent}
-                  />
-                </div>
-
-                <Button
-                  variant="hero"
-                  size="lg"
-                  className="track-cta"
-                  onClick={() => scrollToForm(track.key)}
-                >
-                  Nhận tư vấn {track.vietnameseName} <ArrowRight />
-                </Button>
-              </article>
-            ))}
+                Nhận tư vấn {independentTrack.vietnameseName} <ArrowRight />
+              </Button>
+            </article>
           </div>
         </div>
       </section>
 
-      <Journey activeTrack={activeTrack} />
+      <Journey />
       <Opportunities />
       <AcademicNetwork />
       <AlumniAchievements />
@@ -787,7 +754,7 @@ function TrackList({
   );
 }
 
-function Journey({ activeTrack }: { activeTrack: TrackKey }) {
+function Journey() {
   return (
     <section className="journey-section py-24 md:py-28">
       <div className="content-shell">
@@ -818,7 +785,7 @@ function Journey({ activeTrack }: { activeTrack: TrackKey }) {
           ))}
         </div>
         <div className="journey-cta-row mt-12 flex justify-end">
-          <Button variant="hero" size="lg" onClick={() => scrollToForm(activeTrack)}>
+          <Button variant="hero" size="lg" onClick={() => scrollToForm("independent")}>
             Nhận tư vấn lộ trình <ArrowRight />
           </Button>
         </div>
@@ -1153,7 +1120,6 @@ function ConsultationForm() {
               className="h-12 rounded-md border border-input bg-background px-3 outline-none focus:border-primary"
             >
               <option value="undecided">Cần được tư vấn</option>
-              <option value="standard">Lộ trình tiêu chuẩn</option>
               <option value="independent">Lộ trình chuyên biệt</option>
             </select>
           </label>
@@ -1242,6 +1208,5 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );// deploy sync
-  
+  ); // deploy sync
 }
