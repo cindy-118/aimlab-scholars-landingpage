@@ -6428,3 +6428,147 @@
   .track-solo-foot svg,
   .track-solo-detail .track-list-items li { transition: none; }
 }
+
+
+/* ---------- 2026-10 refinement: hero + section 02 cleanup ---------- */
+.hero-highlights {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  justify-items: start;
+}
+.hero-highlights > div {
+  text-align: left;
+  padding-right: 1rem;
+}
+
+.program-section {
+  padding-block: 5rem;
+}
+.track-solo-shell {
+  display: grid;
+  gap: 1rem;
+}
+.track-solo-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 4.75rem;
+  padding: 0.6rem;
+  border: 1px solid var(--brand-ink);
+  background: linear-gradient(90deg, color-mix(in srgb, #e8f7f1 92%, white 8%) 0%, color-mix(in srgb, #eef1ff 92%, white 8%) 100%);
+}
+.track-solo-nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: min(100%, 27rem);
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--brand-ink) 12%, transparent);
+  background: rgba(255,255,255,0.7);
+}
+.track-solo-nav-item.is-active {
+  box-shadow: inset 0 -3px 0 #00a26b;
+}
+.track-solo-nav-node {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: #00a26b;
+  flex: 0 0 auto;
+}
+.track-solo-nav-copy small {
+  display: block;
+  margin-bottom: 0.32rem;
+  color: #657dff;
+  font: 600 0.72rem/1 var(--font-mono);
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+.track-solo-nav-copy strong {
+  display: block;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--brand-ink);
+}
+.track-solo-card {
+  min-width: 0;
+  padding: clamp(1.5rem, 2.1vw, 2.25rem) !important;
+  border: 1px solid var(--brand-ink);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, #e8f7f1 22%, white 78%) 0, color-mix(in srgb, #e8f7f1 22%, white 78%) 0.45rem, white 0.45rem, white 100%);
+}
+.track-solo-card .track-detail-heading {
+  max-width: 64rem;
+}
+.track-solo-card .track-detail-heading h3 {
+  max-width: 44rem;
+}
+.track-solo-card .track-meta {
+  color: #00a26b;
+}
+.track-solo-card .track-description {
+  max-width: 54rem;
+}
+.track-solo-card .track-detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: 1.5rem;
+}
+.track-solo-card .track-list-block {
+  padding: 0;
+}
+.track-solo-card .track-list-items li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-ink) 10%, transparent);
+}
+.track-solo-card .track-list-items li:last-child {
+  border-bottom: 0;
+}
+.track-solo-card .track-cta {
+  margin-top: 1.75rem;
+}
+/* neutralize old identity/path styles */
+.track-solo-identity,
+.track-solo-path,
+.track-solo-foot,
+.track-solo-heading,
+.track-solo-node,
+.track-solo-detail {
+  all: unset;
+}
+
+@media (max-width: 900px) {
+  .program-section {
+    padding-block: 4rem;
+  }
+  .track-solo-card .track-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .hero-highlights {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+  .track-solo-shell {
+    gap: 0.85rem;
+  }
+  .track-solo-nav {
+    padding: 0.55rem;
+    min-height: 0;
+  }
+  .track-solo-nav-item {
+    width: 100%;
+    min-width: 0;
+    padding: 0.85rem 0.9rem;
+  }
+  .track-solo-nav-copy strong {
+    font-size: 1.25rem;
+  }
+  .track-solo-card {
+    padding: 1.2rem !important;
+  }
+  .track-solo-card .track-detail-heading h3 {
+    font-size: clamp(2rem, 8vw, 2.55rem);
+  }
+}

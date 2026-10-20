@@ -486,10 +486,6 @@ function Index() {
           </div>
           <div className="hero-highlights relative z-10 border-t border-border pt-5">
             <div>
-              <strong className="block text-2xl text-foreground">01</strong>
-              <span className="text-xs text-muted-foreground">Hướng đào tạo</span>
-            </div>
-            <div>
               <strong className="block text-2xl text-foreground">Mentor</strong>
               <span className="text-xs text-muted-foreground">Đồng hành và dẫn dắt</span>
             </div>
@@ -650,45 +646,31 @@ function Index() {
           <div className="program-intro">
             <span className="section-label">02 // HƯỚNG ĐÀO TẠO</span>
             <h2 className="program-title section-main-title">
-              Một lộ trình chuyên biệt theo mục tiêu người học.
+              Lộ trình chuyên biệt theo mục tiêu người học.
             </h2>
           </div>
 
-          <div className="track-solo-layout mt-14">
-            <div
-              className="track-solo-identity"
-              aria-label="Independent Track — Lộ trình chuyên biệt"
-            >
-              <div className="track-solo-heading">
-                <span className="track-solo-node" aria-hidden="true" />
-                <div>
+          <div className="track-solo-shell mt-12">
+            <div className="track-solo-nav" aria-label="Independent Track — Lộ trình chuyên biệt">
+              <div className="track-solo-nav-item is-active">
+                <span className="track-solo-nav-node" aria-hidden="true" />
+                <div className="track-solo-nav-copy">
                   <small>{independentTrack.englishName}</small>
-                  <h3>
-                    <span>Lộ trình</span>
-                    <span>chuyên biệt</span>
-                  </h3>
+                  <strong>{independentTrack.vietnameseName}</strong>
                 </div>
-              </div>
-              <div className="track-solo-path" aria-hidden="true">
-                <span className="track-solo-path-line" />
-                <span className="track-solo-path-point" />
-                <span className="track-solo-path-point" />
-                <span className="track-solo-path-point" />
-              </div>
-              <div className="track-solo-foot" aria-hidden="true">
-                <span>01 / 01</span>
-                <ArrowUpRight size={20} strokeWidth={1.7} />
               </div>
             </div>
 
-            <article className="track-detail-v2 track-detail-v2-indigo track-solo-detail">
-              <div className="track-detail-heading">
-                <span className="track-chip track-chip-indigo">{independentTrack.englishName}</span>
-                <h3>{independentTrack.goal}</h3>
-                {independentTrack.format ? (
-                  <p className="track-meta">{independentTrack.format}</p>
-                ) : null}
-                <p className="track-description">{independentTrack.description}</p>
+            <article className="track-detail-v2 track-detail-v2-indigo track-solo-card">
+              <div className="track-solo-card-head">
+                <div className="track-detail-heading">
+                  <span className="track-chip track-chip-indigo">{independentTrack.englishName}</span>
+                  <h3>{independentTrack.goal}</h3>
+                  {independentTrack.format ? (
+                    <p className="track-meta">{independentTrack.format}</p>
+                  ) : null}
+                  <p className="track-description">{independentTrack.description}</p>
+                </div>
               </div>
 
               <div className="track-detail-grid">
