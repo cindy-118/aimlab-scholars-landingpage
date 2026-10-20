@@ -6572,3 +6572,74 @@
     font-size: clamp(2rem, 8vw, 2.55rem);
   }
 }
+
+
+/* v3: a single compact, properly aligned Section 02 panel */
+.program-section {
+  padding-block: clamp(2.75rem, 4vw, 3.75rem) !important;
+}
+.program-section .program-intro .program-title {
+  margin-top: 0.9rem !important;
+  font-size: clamp(2rem, 3.4vw, 3.2rem) !important;
+  line-height: 1.12 !important;
+}
+.program-section .track-solo-shell {
+  width: 100%;
+  margin-top: 1.8rem !important;
+  display: block;
+}
+.program-section .track-solo-card.track-detail-v2 {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0 !important;
+  padding: clamp(1.5rem, 2.5vw, 2.5rem) !important;
+  border: 1.5px solid #101c18 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+}
+.program-section .track-solo-card .track-solo-card-head,
+.program-section .track-solo-card .track-detail-heading,
+.program-section .track-solo-card .track-description {
+  width: 100%;
+  max-width: none !important;
+}
+.program-section .track-solo-card .track-detail-heading h3 {
+  max-width: none !important;
+  font-size: clamp(1.75rem, 2.8vw, 2.6rem) !important;
+}
+.program-section .track-solo-card .track-detail-heading {
+  gap: 0.6rem !important;
+}
+.program-section .track-solo-card .track-description {
+  margin-top: 0.4rem !important;
+  line-height: 1.5 !important;
+}
+.program-section .track-solo-card .track-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: clamp(1.5rem, 4vw, 3.5rem) !important;
+  row-gap: 1rem !important;
+  margin-top: 1.4rem !important;
+}
+.program-section .track-solo-card .track-list-items {
+  margin-top: 0.65rem !important;
+  gap: 0.2rem !important;
+}
+.program-section .track-solo-card .track-list-items li {
+  padding: 0.34rem 0 !important;
+  line-height: 1.4 !important;
+}
+.program-section .track-solo-card .track-cta {
+  margin-top: 1.5rem !important;
+}
+@media (max-width: 720px) {
+  .program-section .track-solo-card .track-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .program-section .track-solo-card.track-detail-v2 {
+    padding: 1.3rem !important;
+  }
+}

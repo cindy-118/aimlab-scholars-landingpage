@@ -650,17 +650,7 @@ function Index() {
             </h2>
           </div>
 
-          <div className="track-solo-shell mt-12">
-            <div className="track-solo-nav" aria-label="Independent Track — Lộ trình chuyên biệt">
-              <div className="track-solo-nav-item is-active">
-                <span className="track-solo-nav-node" aria-hidden="true" />
-                <div className="track-solo-nav-copy">
-                  <small>{independentTrack.englishName}</small>
-                  <strong>{independentTrack.vietnameseName}</strong>
-                </div>
-              </div>
-            </div>
-
+          <div className="track-solo-shell mt-8">
             <article className="track-detail-v2 track-detail-v2-indigo track-solo-card">
               <div className="track-solo-card-head">
                 <div className="track-detail-heading">
